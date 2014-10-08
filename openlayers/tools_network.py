@@ -21,6 +21,8 @@
 from PyQt4.QtCore import *
 from PyQt4.QtNetwork import *
 
+DEFAULT_PROXY_PORT = 8080
+
 def getProxy():
   # Adaption by source of "Plugin Installer - Version 1.0.10" 
   proxy = None
@@ -39,7 +41,8 @@ def getProxy():
     else: proxy.setType(QNetworkProxy.DefaultProxy)
     proxy.setHostName(settings.value("/proxyHost"))
     # TODO
-    proxy.setPort(settings.value("/proxyPort", 10, type=int))
+    proxyPort = lambda string: int(string) if string.strip() else DEFAULT_PROXY_PORT
+    proxy.setPort(proxyPort(settings.value("/proxyPort")))
     proxy.setUser(settings.value("/proxyUser"))
     proxy.setPassword(settings.value("/proxyPassword"))
   settings.endGroup()
