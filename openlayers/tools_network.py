@@ -21,7 +21,7 @@
 from PyQt4.QtCore import *
 from PyQt4.QtNetwork import *
 
-DEFAULT_PROXY_PORT = 8080
+DEFAULT_PROXY_PORT = 80
 
 def getProxy():
   # Adaption by source of "Plugin Installer - Version 1.0.10" 
